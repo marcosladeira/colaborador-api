@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Sistema de Gestão de Colaboradores</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container my-2">
+		<h1>Sistema de Gestão de Colaboradores</h1>
+		<hr>
+		<h2>Editar Colaborador</h2>
+		<form action="#" th:action="@{/crud/colaboradores/salvar}" th:object="${colaborador}" method="POST">
+		
+			<input type="hidden" id="id" th:field="*{id}">
+			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="text-danger"></span>
+			<input type="text" th:field="*{nome}" placeholder="Nome" class="form-control mb-4 col-4">
+		    <span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" class="text-danger"></span>
+            <input type="text" th:field="*{cpf}" placeholder="CPF" class="form-control mb-4 col-4">
+            <span th:if="${#fields.hasErrors('cafemanha')}" th:errors="*{cafemanha}" class="text-danger"></span> 
+            <input type="text" th:field="*{cafemanha}" placeholder="Café da manhã" class="form-control mb-4 col-4">
+			
+			<button type="submit" class="btn btn-info col-2">Salvar</button>
+		</form>
+		<hr>
+		<a th:href="@{/crud/colaboradores}">Retornar para a lista de colaboradores</a>
+	</div>
+</body>
+</html>

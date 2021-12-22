@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Sistema de Gestão de Colaboradores</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<div class="container my-2" method="POST" th:action="@{/index}">
+		<a th:href="@{/crud/colaboradores/novo}" class="btn btn-primary btn-sm mb-3">Incluir Colaborador</a>
+		<h1>Colaborador</h1>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>CPF</th>
+					<th>Café da manhã</th>
+					<th>Ações</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="colaborador:${listaColaboradores}">
+					<td th:text="${colaborador.nome}"></td>
+					<td th:text="${colaborador.cpf}"></td>
+					<td th:text="${colaborador.cafemanha}"></td>
+					<td>
+						<a th:href="@{/crud/colaboradores/{id}(id=${colaborador.id})}" class="btn btn-primary">Alterar</a>
+						<a th:href="@{/crud/colaboradores/excluir/{id}(id=${colaborador.id})}" class="btn btn-danger">Excluir</a>			
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
